@@ -154,7 +154,6 @@ def delete_event(message):
     button_exit = types.KeyboardButton('Back')
     markup.add(*buttons).add(button_exit)
     bot.send_message(message.chat.id, 'Select which event to delete', reply_markup=markup)
-    print(message.text, database.get_event_name_by_owner(message.chat.id))
 @bot.message_handler(func=lambda message: message.text in database.get_event_name_by_owner(message.chat.id))
 def button_delete_click(message):
     if message.text in database.get_event_name_by_owner(message.chat.id):
