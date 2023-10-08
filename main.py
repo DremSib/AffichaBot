@@ -18,13 +18,14 @@ def determine_location(latitude, longitude, GEO_API_KEY=config.GEO_API_KEY):
 # Determines whether the date is correct (date)
 def is_valide_date(date):
     try:
-        current_datetime = datetime.datetime.now()
-        flag = False
-        if int(date[6:10]) >= current_datetime.year:
-            if int(date[3:5]) >= current_datetime.month and current_datetime.month <= 12:
-                if int(date[0:2]) > current_datetime.day and current_datetime.day <= 31:       
-                    flag = True
-        return flag
+        if len(date) == 16:
+            current_datetime = datetime.datetime.now()
+            flag = False
+            if int(date[6:10]) >= current_datetime.year:
+                if int(date[3:5]) >= current_datetime.month and current_datetime.month <= 12:
+                    if int(date[0:2]) > current_datetime.day and current_datetime.day <= 31:       
+                        flag = True
+            return flag
     except:
         return False
 
