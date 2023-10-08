@@ -4,6 +4,7 @@ from database import database
 import config
 import datetime
 
+# Launch a bot (TOKEN)
 bot = telebot.TeleBot(config.TOKEN)
 
 # ---------------- SECONDARY FUNCTIONS ---------------- #
@@ -14,14 +15,14 @@ bot = telebot.TeleBot(config.TOKEN)
 def determine_location(latitude, longitude, GEO_API_KEY=config.GEO_API_KEY):
     return 'current_location'
 
-#
+# Determines whether the date is correct (date)
 def is_valide_date(date):
     try:
         current_datetime = datetime.datetime.now()
         flag = False
         if int(date[6:10]) >= current_datetime.year:
             if int(date[3:5]) >= current_datetime.month and current_datetime.month <= 12:
-                if int(date[0:2]) > current_datetime.day and current_datetime.day <= 31:         
+                if int(date[0:2]) > current_datetime.day and current_datetime.day <= 31:       
                     flag = True
         return flag
     except:
@@ -71,7 +72,6 @@ def geolocation_request(message):
     start(message)
 
 # Interests test ()
-# (!) Simple test as an example.
 @bot.message_handler(func=lambda message: message.text == 'Take the test')
 def test(message):
     markup = types.ReplyKeyboardMarkup(row_width=3, resize_keyboard=True)
@@ -158,6 +158,8 @@ def delete_event(message):
 def button_delete_click(message):
     if message.text in database.get_event_name_by_owner(message.chat.id):
         database.delete_event_by_id(database.get_event_id(message.text, message.chat.id))
+        bot.send_message(message.chat.id, f'You deleted {message.text}')
+        admin_panel(message)
 
 # Settings ()
 @bot.message_handler(func=lambda message: message.text == 'Settings')
