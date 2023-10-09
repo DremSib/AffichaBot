@@ -1,4 +1,6 @@
 TOKEN = '6352094966:AAHkhJbcTqHao4hx054AqJg80OPlAvHwRnk'
+WEB_URL = ''
+PATCH = ''
 GEO_API_KEY = ''
 
 tags = [
