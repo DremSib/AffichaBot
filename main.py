@@ -55,7 +55,7 @@ def start(message):
         button_admin_panel = types.KeyboardButton('Admin panel')
         markup.add(button_admin_panel)
     if database.request_user_location(message.chat.id) and database.request_user_tags(message.chat.id):
-        button_launch_the_application = types.KeyboardButton('Launch the App')
+        button_launch_the_application = types.KeyboardButton('Launch the App', web_app=types.WebAppInfo(config.WEB_URL))
         button_settings = types.KeyboardButton('Settings')
         markup.add(button_launch_the_application, button_settings)
     if not database.request_user_data(message.chat.id)[2] or not database.request_user_data(message.chat.id)[3]:
