@@ -1,0 +1,24 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block content %}
+
+{% for inner_array in content %}
+<div class="content">
+    <li>
+        <h2>{{ inner_array.1 }}</h2>
+        <h3>{{ inner_array.2 }}</h3>
+        {{ inner_array.4 }} <br><br>
+        <form action="https://api.telegram.org/bot6352094966:AAHkhJbcTqHao4hx054AqJg80OPlAvHwRnk/sendMessage" method="POST">
+            <input type="text" name="chat_id" value="{{user_id}}}" hidden>
+            <input type="text" name="text" value="I will go {{inner_array.1}}" hidden>
+            <button type="submit">I will go</button>
+        </form>
+    </li>
+</div>
+{% endfor %}
+
+{% endblock %}
