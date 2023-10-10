@@ -3,6 +3,8 @@ Application for the mini-applications contest. The application is a platform for
 The project is written in Python and the Django framework.
 This version of the project has many conventions, such as manual data entry into configuration files, etc.
 
+t.me/@wherecanigobot
+
 # Project setup
 First you should install Django.
 
