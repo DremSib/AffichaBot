@@ -1,4 +1,5 @@
 TOKEN = '6352094966:AAHkhJbcTqHao4hx054AqJg80OPlAvHwRnk'
+GEO_API_KEY = ''
 WEB_URL = ''
 
 tags = [
